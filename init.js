@@ -12,6 +12,7 @@ const DBError = require('./server/common/db_error');
 let dbInit = () => {
   console.log('Init document Mongodb start!');
   let admin = accountInit();
+  console.log('Please use admin/123456 to login system ,and delete it before you set the new adminstrator!');
   console.log('Init document Mongodb end! press any key to exit!');
   process.stdin.on('readable', () => {
     const chunk = process.stdin.read();
