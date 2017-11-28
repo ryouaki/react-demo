@@ -30,7 +30,7 @@ app.use(session({
 
 app.use(logger(null, {filter: config.api}));
 
-app.use(express.static(path.join(__dirname, '..', 'build')));
+app.use(express.static(path.join(__dirname, '..', 'views')));
 // app.use(config.api, route);
 
 app.use(function (req, res) {
