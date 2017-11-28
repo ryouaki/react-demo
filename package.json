@@ -6,6 +6,7 @@
   "scripts": {
     "f:start": "node ./client/scripts/start.js",
     "f:build": "node ./client/scripts/build.js",
+    "b:start": "node ./server/bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +18,13 @@
   "bugs": {
     "url": "https://github.com/ryouaki/react-kanban/issues"
   },
-  "homepage": "https://github.com/ryouaki/react-kanban#readme",
+  "homepage": "https://github.com/",
   "dependencies": {
-    "express": "^4.16.2"
+    "connect-mongo": "^2.0.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "moment": "^2.19.1",
+    "mongoose": "^4.13.0"
   },
   "devDependencies": {
     "autoprefixer": "7.1.6",
