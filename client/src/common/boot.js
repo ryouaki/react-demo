@@ -2,8 +2,6 @@
  * 用于动态设置html标签的font-size大小，用于自适应各种屏幕尺寸。
  */
 
-let root = window || global;
-
 // 获取屏幕可视宽度，并设置html标签的font-size。
 let resizeCallback = () => {
   let rootFontSize = 0;
