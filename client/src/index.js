@@ -5,20 +5,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import {
-  BrowserRouter as Router,
-  Route
+  BrowserRouter as Router
 } from 'react-router-dom'
-
-import App from './App';
+import Containers from './containers';
 import registerServiceWorker from './registerServiceWorker';
 
 import storeCreate from './store';
 let store = storeCreate();
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store}> 
     <Router>
-      <Route component={App} />
+      <Containers />
     </Router>
   </Provider>,
   document.getElementById('root')

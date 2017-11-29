@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/ryouaki/react-kanban/issues"
   },
-  "homepage": "https://github.com/",
+  "homepage": "https://github.com",
   "dependencies": {
     "compression": "^1.7.1",
     "connect-mongo": "^2.0.0",
