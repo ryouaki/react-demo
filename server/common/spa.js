@@ -5,7 +5,9 @@ exports = module.exports = (options) => {
   }
 
   return (req, res, next) => {
-    console.log(req.originalUrl);
+    console.log(req.originalUrl); // '/admin/new'
+    console.log(req.baseUrl); // '/admin'
+    console.log(req.path); // '/new'
     next();
   }
 }
