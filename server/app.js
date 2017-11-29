@@ -13,6 +13,7 @@ const compress = require('compression');
 const config = require('./config'); // 用于系统配置
 const logger = require('./common/logger'); // 系统日志中间件
 const route = require('./routers'); // 系统后台api
+const spa = require('./common/spa');
 
 const app = express();
 
@@ -28,9 +29,18 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-app.use(logger(null, {filter: config.api}));
+if (process.env.NODE_ENV != 'production') {
+  const cors = require('cors');//跨域中间件
+  app.use(cors({
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true,
+    Origin: '*'
+  }));//设置跨域
+}
 
+app.use(logger(null, {filter: config.api}));
 app.use(express.static(path.join(__dirname, '..', 'views')));
+app.use(spa());
 app.use(config.api, route);
 
 app.use(function (req, res) {
