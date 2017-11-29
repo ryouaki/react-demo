@@ -11,6 +11,7 @@ let middleware = [ReduxThunk];
 let reducers = initReducer();
 
 let rootReducer = (state, action) => {
+  console.log(`action ${action.type}`);
   return reducers(state, action);
 }
 

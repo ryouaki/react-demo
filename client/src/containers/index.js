@@ -5,8 +5,6 @@ import {
   Switch
 } from 'react-router-dom'
 
-console.log(process.env.PUBLIC_URL);
-
 class Container extends React.Component {
   render() {
     return <Switch>

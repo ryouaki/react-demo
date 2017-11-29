@@ -1,0 +1,1 @@
+export const INIT_APPICATION = '@@action/INIT_APPICATION';
