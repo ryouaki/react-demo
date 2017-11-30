@@ -6,6 +6,7 @@
   "scripts": {
     "f:start": "node ./client/scripts/start.js",
     "f:build": "node ./client/scripts/build.js",
+    "f:test": "node ./client/scripts/test.js",
     "b:start": "node ./server/bin/dev.js",
     "initialize": "node ./init.js",
     "test": "node ./common/utils.js"
