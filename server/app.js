@@ -49,7 +49,7 @@ if (process.env.NODE_ENV != 'production') {
 }
 
 app.use(logger(null, {filter: root + config.api}));
-app.use(express.static(staticPath, {
+app.use(root, express.static(staticPath, {
   maxAge: 1000*60*60*24
 }));
 app.use(spa({

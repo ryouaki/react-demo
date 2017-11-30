@@ -23,10 +23,7 @@ exports = module.exports = (options) => {
       } else {
         res.status(404).json({success: false, msg: 'Request resources not found!'})
       }
+      // next();
     }
   }
 }
-
-// app.get('*', function (request, response){
-//   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-// })
