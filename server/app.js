@@ -14,6 +14,10 @@ const config = require('./config'); // 用于系统配置
 const logger = require('./common/logger'); // 系统日志中间件
 const route = require('./routers'); // 系统后台api
 const spa = require('./common/spa');
+const utils = require('./../common/utils');
+
+let root = utils.getPublicUrl();
+root = root[root.length - 1] === '/' ? root.substring(0, root.length -2) : root;
 
 const app = express();
 
@@ -38,10 +42,10 @@ if (process.env.NODE_ENV != 'production') {
   }));//设置跨域
 }
 
-app.use(logger(null, {filter: config.api}));
+app.use(logger(null, {filter: root + config.api}));
 app.use(express.static(path.join(__dirname, '..', 'views')));
 app.use(spa());
-app.use(config.api, route);
+app.use(root + config.api, route);
 
 app.use(function (req, res) {
   return res.status(404).json({success:false}).end();

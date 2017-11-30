@@ -8,7 +8,7 @@
     "f:build": "node ./client/scripts/build.js",
     "b:start": "node ./server/bin/dev.js",
     "initialize": "node ./init.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./common/utils.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/ryouaki/react-kanban/issues"
   },
-  "homepage": "https://github.com",
+  "homepage": "https://github.com/www",
   "dependencies": {
     "compression": "^1.7.1",
     "connect-mongo": "^2.0.0",
