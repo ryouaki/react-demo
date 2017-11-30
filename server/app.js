@@ -9,6 +9,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session); 
 // 资源压缩，优化网页加载速度
 const compress = require('compression'); 
+// 对于请求的body部分进行解析的中间件，但是不能用于解析multipart bodies
+const bodyParser = require('body-parser');
 
 const config = require('./config'); // 用于系统配置
 const logger = require('./common/logger'); // 系统日志中间件
@@ -24,7 +26,8 @@ const staticPath = path.join(__dirname, '..', 'views');
 const app = express();
 
 app.use(compress());
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(session({
   secret: config.session.secret,
   store: new MongoStore({
@@ -36,6 +39,7 @@ app.use(session({
 }));
 
 if (process.env.NODE_ENV != 'production') {
+  root = '';
   const cors = require('cors');//跨域中间件
   app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -49,7 +53,13 @@ app.use(express.static(staticPath, {
   maxAge: 1000*60*60*24
 }));
 app.use(spa({
-  whitelist: [root + config.api]
+  whiteList: [root + config.api],
+  htmlList: [
+    {
+      route: root,
+      html: path.join(process.cwd(), '/views/index.html')
+    }
+  ]
 }));
 app.use(root + config.api, route);
 
