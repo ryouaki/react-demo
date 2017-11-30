@@ -7,10 +7,11 @@ import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router
 } from 'react-router-dom'
+
 import Containers from './containers';
 import registerServiceWorker from './registerServiceWorker';
-
 import storeCreate from './store';
+
 let store = storeCreate();
 
 ReactDOM.render(

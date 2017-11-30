@@ -1,7 +1,8 @@
 /*
- * 用于动态设置html标签的font-size大小，用于自适应各种屏幕尺寸。
+ * 用于初始化设置前端系统参数
  */
-
+import Axios from 'axios';
+// const utils = require('./../../../common/utils');
 // 获取屏幕可视宽度，并设置html标签的font-size。
 let resizeCallback = () => {
   let rootFontSize = 0;
@@ -21,3 +22,13 @@ window.addEventListener('resize', resizeCallback, false);
 
 // 在程序启动就设置html标签的font-size。
 resizeCallback();
+
+let root = process.env.PUBLIC_URL;
+Axios.defaults.headers.post['Content-Type'] = 'application/json';
+Axios.defaults.timeout = 25000;
+if (process.env.NODE_ENV !== 'production') {
+  Axios.defaults.baseURL = 'http://localhost:3000';
+  Axios.defaults.withCredentials = true;
+} else {
+  Axios.defaults.baseURL = root;
+}

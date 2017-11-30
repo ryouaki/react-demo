@@ -16,10 +16,9 @@ const config = require('./config'); // 用于系统配置
 const logger = require('./common/logger'); // 系统日志中间件
 const route = require('./routers'); // 系统后台api
 const spa = require('./common/spa');
-const utils = require('./../common/utils');
+const utils = require('./common/utils');
 
 let root = utils.getPublicUrl();
-root = root[root.length - 1] === '/' ? root.substring(0, root.length -2) : root;
 
 const staticPath = path.join(__dirname, '..', 'views');
 
@@ -44,7 +43,7 @@ if (process.env.NODE_ENV != 'production') {
   app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
-    Origin: '*'
+    origin: 'http://localhost:3001',
   }));//设置跨域
 }
 
