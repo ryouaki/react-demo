@@ -19,6 +19,8 @@ const utils = require('./../common/utils');
 let root = utils.getPublicUrl();
 root = root[root.length - 1] === '/' ? root.substring(0, root.length -2) : root;
 
+const staticPath = path.join(__dirname, '..', 'views');
+
 const app = express();
 
 app.use(compress());
@@ -43,8 +45,12 @@ if (process.env.NODE_ENV != 'production') {
 }
 
 app.use(logger(null, {filter: root + config.api}));
-app.use(express.static(path.join(__dirname, '..', 'views')));
-app.use(spa());
+app.use(express.static(staticPath, {
+  maxAge: 1000*60*60*24
+}));
+app.use(spa({
+  whitelist: [root + config.api]
+}));
 app.use(root + config.api, route);
 
 app.use(function (req, res) {
