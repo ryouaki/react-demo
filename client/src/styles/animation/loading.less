@@ -1,42 +1,37 @@
-/* Import this if you are using modernizr (recommended) 
-It means that loaders will fallback to a text state of simply saying "Loading..." in older browsers
-*/
-.load-container .loader {
-  text-indent: 0;
-  text-align: center;
-  color: #FFF;
-  font-size: 17px;
-  background: none;
-  border: 0 none;
-  width: auto;
-  height: auto;
-  margin: 1em auto;
-  overflow: visible;
-  box-shadow: none;
-  -webkit-animation: none;
-  animation: none;
-}
-.load-container .loader:before,
-.load-container .loader:after {
-  display: none;
+.load-container {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  font-size: 8px;
+  background-color: RGBA(0, 0, 0, .2);
+  z-index: @mi1;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
 }
 
-.load4 .loader {
-  color: #ffffff;
-  font-size: 20px;
-  margin: 100px auto;
-  width: 1em;
-  height: 1em;
+.loader {
+  position: absolute;
+  color: @dc;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%, -50%);
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   position: relative;
   text-indent: -9999em;
-  -webkit-animation: load4 1.3s infinite linear;
-  animation: load4 1.3s infinite linear;
+  -webkit-animation: load 1.3s infinite linear;
+  animation: load 1.3s infinite linear;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
-@-webkit-keyframes load4 {
+@-webkit-keyframes load {
   0%,
   100% {
     box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
@@ -63,7 +58,7 @@ It means that loaders will fallback to a text state of simply saying "Loading...
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
   }
 }
-@keyframes load4 {
+@keyframes load {
   0%,
   100% {
     box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;

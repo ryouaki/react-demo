@@ -10,6 +10,8 @@ import {
   INIT_APPICATION
 } from './../actions';
 
+import Loading from './../components/Loading';
+
 import TestTpl from './test';
 
 class Container extends React.Component {
@@ -18,14 +20,23 @@ class Container extends React.Component {
     this.props.init();
   }
   render() {
-    return <Switch>
-      <Route path='/' component={TestTpl} />
-    </Switch>
+
+    const {
+      common = {}
+    } = this.props;
+
+    return <div className="kanban-root">
+      <Switch>
+        <Route path='/' component={TestTpl} />
+      </Switch>
+      {common.isFetching&&<Loading />}
+    </div>
   }
 }
 
 export default connect((store) => {
   return {
+    common: store.common
   }
 }, {
   init: () => {
