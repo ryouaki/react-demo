@@ -1,5 +1,5 @@
 import {
-  INIT_APPICATION,
+  APPICATION_INIT,
   APPLICATION_CHANGE
 } from './../actions';
 
@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 
 export default function (state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case INIT_APPICATION:
+    case APPICATION_INIT:
     {
       return INITIAL_STATE;
     }
