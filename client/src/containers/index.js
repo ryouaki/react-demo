@@ -15,6 +15,11 @@ class Container extends React.Component {
     super(props);
     this.props.initApplication();
   }
+
+  componentDidMount() {
+    this.props.showLoading(false);
+  }
+
   render() {
 
     const {
