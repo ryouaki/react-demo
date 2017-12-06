@@ -28,13 +28,13 @@ class Container extends React.Component {
     return <div className="kanban-root">
       <Switch>
         <Route path='/1' component={ (props) => {
-            return <Bundle load={ () => import('./test1')}>
+            return <Bundle load={ () => import('./1.test')}>
                 {Test1Tpl => <Test1Tpl {...props} />}
               </Bundle>
           } 
         }/>
         <Route path='/2' component={ (props) => {
-            return <Bundle load={ () => import('./test2')}>
+            return <Bundle load={ () => import('./2.test')}>
                 {Test2Tpl => <Test2Tpl {...props} />}
               </Bundle>
           } 

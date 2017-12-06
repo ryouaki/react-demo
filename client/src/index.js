@@ -9,7 +9,6 @@ import {
 } from 'react-router-dom'
 
 import Containers from './containers';
-import registerServiceWorker from './registerServiceWorker';
 import storeCreate from './store';
 
 let store = storeCreate();
@@ -22,4 +21,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-// registerServiceWorker();
