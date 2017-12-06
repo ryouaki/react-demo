@@ -6,7 +6,7 @@ const path = require('path');
 // express的session中间件
 const session = require('express-session'); 
 // 利用mongodb管理session实现session的持久化，为将来集群做准备。如果使用redis使用connect-redis
-const MongoStore = require('connect-mongo')(session); 
+// const MongoStore = require('connect-mongo')(session); 
 // 资源压缩，优化网页加载速度
 const compress = require('compression'); 
 // 对于请求的body部分进行解析的中间件，但是不能用于解析multipart bodies
@@ -29,25 +29,25 @@ const app = express();
 app.use(compress());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(session({
-  secret: config.session.secret,
-  store: new MongoStore({
-      url: config.session.host,
-      ttl: config.session.ttl
-  }),
-  resave: false,
-  saveUninitialized: false,
-}));
+// app.use(session({
+//   secret: config.session.secret,
+//   store: new MongoStore({
+//       url: config.session.host,
+//       ttl: config.session.ttl
+//   }),
+//   resave: false,
+//   saveUninitialized: false,
+// }));
 
-if (process.env.NODE_ENV != 'production') {
-  root = '';
-  const cors = require('cors');//跨域中间件
-  app.use(cors({
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true,
-    origin: 'http://localhost:3001',
-  }));//设置跨域
-}
+// if (process.env.NODE_ENV != 'production') {
+//   root = '';
+//   const cors = require('cors');//跨域中间件
+//   app.use(cors({
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     credentials: true,
+//     origin: 'http://localhost:3001',
+//   }));//设置跨域
+// }
 
 app.use(logger(null, {filter: root + config.api}));
 app.use(whiteList({
