@@ -2,4 +2,4 @@
 
 process.env.GENERATE_SOURCEMAP = false;
 
-require('./build');
+require('./test');

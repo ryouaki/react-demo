@@ -15,7 +15,9 @@ const bodyParser = require('body-parser');
 const config = require('./config'); // 用于系统配置
 const logger = require('./common/logger'); // 系统日志中间件
 const route = require('./routers'); // 系统后台api
-const spa = require('./common/spa');
+const spa = require('./common/spa'); // 前端路由 中间件
+const whiteList = require('./common/whitelist'); // 权限白名单
+
 const utils = require('./common/utils');
 
 let root = utils.getPublicUrl();
@@ -48,6 +50,9 @@ if (process.env.NODE_ENV != 'production') {
 }
 
 app.use(logger(null, {filter: root + config.api}));
+app.use(whiteList({
+  
+}));
 app.use(root, express.static(staticPath, {
   maxAge: 1000*60*60*24
 }));

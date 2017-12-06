@@ -1,1 +1,0 @@
-{"version":3,"sources":["styles/index.less"],"names":[],"mappings":"AACA,KACE,QAAY","file":"static/css/main.7411b904.css","sourcesContent":["/* 全站颜色配置 */\nbody {\n  margin: 0px;\n}\n\n\n\n// WEBPACK FOOTER //\n// ./client/src/styles/index.less"],"sourceRoot":""}
