@@ -7,8 +7,7 @@ import {
 
 import Loading from './../components/Loading';
 import * as actions from './../actions/a_common';
-
-import TestTpl from './test';
+import Bundle from './../components/Bundle';
 
 class Container extends React.Component {
   constructor(props) {
@@ -28,7 +27,18 @@ class Container extends React.Component {
 
     return <div className="kanban-root">
       <Switch>
-        <Route path='/' component={ TestTpl } />
+        <Route path='/1' component={ (props) => {
+            return <Bundle load={ () => import('./test1')}>
+                {Test1Tpl => <Test1Tpl {...props} />}
+              </Bundle>
+          } 
+        }/>
+        <Route path='/2' component={ (props) => {
+            return <Bundle load={ () => import('./test2')}>
+                {Test2Tpl => <Test2Tpl {...props} />}
+              </Bundle>
+          } 
+        }/>
       </Switch>
       { common.isFetching && <Loading /> }
     </div>

@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 class TestTpl extends React.Component {
   render() {
     return <div>
-        {this.props.message}
+        test1
       </div>
   }
 }
 
 export default connect( (store) => {
   return {
-    message: store.common.message
   }
 }, {
 
