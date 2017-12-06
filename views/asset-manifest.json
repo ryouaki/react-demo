@@ -1,10 +1,6 @@
 {
   "main.css": "static/css/main.71276018.css",
-  "main.css.map": "static/css/main.71276018.css.map",
   "main.js": "static/js/main.b798026a.js",
-  "main.js.map": "static/js/main.b798026a.js.map",
   "static/js/0.9e2cbd3f.chunk.js": "static/js/0.9e2cbd3f.chunk.js",
-  "static/js/0.9e2cbd3f.chunk.js.map": "static/js/0.9e2cbd3f.chunk.js.map",
-  "static/js/1.db236f41.chunk.js": "static/js/1.db236f41.chunk.js",
-  "static/js/1.db236f41.chunk.js.map": "static/js/1.db236f41.chunk.js.map"
+  "static/js/1.db236f41.chunk.js": "static/js/1.db236f41.chunk.js"
 }
