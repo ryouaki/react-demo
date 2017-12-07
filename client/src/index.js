@@ -10,6 +10,7 @@ import {
 
 import Containers from './containers';
 import storeCreate from './store';
+import registerServiceWorker from './registerServiceWorker';
 
 let store = storeCreate();
 
@@ -21,3 +22,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+registerServiceWorker();
