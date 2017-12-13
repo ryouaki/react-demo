@@ -24,8 +24,7 @@ class Container extends React.Component {
   render() {
 
     const {
-      common = {},
-      match = {}
+      common = {}
     } = this.props;
 
     if (!common.isLogined) {
@@ -33,8 +32,8 @@ class Container extends React.Component {
           {Login => <Login />}
         </Bundle>
     } else {
-
-      return match.path === getPublicUrl('/')?
+      let basepath = window.location.pathname;
+      return basepath === getPublicUrl('/')?
         <Redirect to={ getPublicUrl('/1') }/>:
         <div className="kanban-root">
           <Switch>
