@@ -4,7 +4,8 @@ import {
 } from './../actions';
 
 const INITIAL_STATE = {
-  isFetching: true
+  isFetching: true,
+  isLogined: false
 };
 
 export default function (state = INITIAL_STATE, action = {}) {

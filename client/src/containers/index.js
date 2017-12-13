@@ -26,23 +26,29 @@ class Container extends React.Component {
       common = {}
     } = this.props;
 
-    return <div className="kanban-root">
-      <Switch>
-        <Route path={ getPublicUrl('/1') } component={ (props) => {
-            return <Bundle load={ () => import('./1.test') }>
-              {Test1Tpl => <Test1Tpl {...props} />}
-            </Bundle>
-          } 
-        }/>
-        <Route path={ getPublicUrl('/2') } component={ (props) => {
-            return <Bundle load={ () => import('./2.test') }>
-              {Test2Tpl => <Test2Tpl {...props} />}
-            </Bundle>
-          } 
-        }/>
-      </Switch>
-      { common.isFetching && <Loading /> }
-    </div>
+    if (!common.isLogined) {
+      return <Bundle load={ () => import('./login') }>
+          {Login => <Login />}
+        </Bundle>
+    } else {
+      return <div className="kanban-root">
+          <Switch>
+            <Route path={ getPublicUrl('/1') } component={ (props) => {
+                return <Bundle load={ () => import('./1.test') }>
+                  {Test1Tpl => <Test1Tpl {...props} />}
+                </Bundle>
+              } 
+            }/>
+            <Route path={ getPublicUrl('/2') } component={ (props) => {
+                return <Bundle load={ () => import('./2.test') }>
+                  {Test2Tpl => <Test2Tpl {...props} />}
+                </Bundle>
+              } 
+            }/>
+          </Switch>
+          { common.isFetching && <Loading /> }
+        </div>
+    }
   }
 }
 
