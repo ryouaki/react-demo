@@ -9,10 +9,16 @@ class Bundle extends React.Component {
   constructor(props) {
     super(props);
     this.state = { mod: null };
+    this.isMounting = false;
   }
 
   componentWillMount() {
+    this.isMounting = true;
     this.loadModule(this.props);
+  }
+
+  componentWillUnmount() {
+    this.isMounting = false;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,9 +30,11 @@ class Bundle extends React.Component {
   loadModule(props) {
     this.setState({ mod: null });
     props.load().then((mod) => {
-      this.setState({
-        mod: mod.default ? mod.default : mod
-      });
+      if (this.isMounting) {
+        this.setState({
+          mod: mod.default ? mod.default : mod
+        });
+      }
     });
   }
 
