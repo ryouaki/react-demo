@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 
 import Loading from './../components/Loading';
@@ -23,7 +24,8 @@ class Container extends React.Component {
   render() {
 
     const {
-      common = {}
+      common = {},
+      match = {}
     } = this.props;
 
     if (!common.isLogined) {
@@ -31,7 +33,10 @@ class Container extends React.Component {
           {Login => <Login />}
         </Bundle>
     } else {
-      return <div className="kanban-root">
+
+      return match.path === getPublicUrl('/')?
+        <Redirect to={ getPublicUrl('/1') }/>:
+        <div className="kanban-root">
           <Switch>
             <Route path={ getPublicUrl('/1') } component={ (props) => {
                 return <Bundle load={ () => import('./1.test') }>
