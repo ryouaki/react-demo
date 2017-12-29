@@ -5,7 +5,7 @@ import {
 
 const INITIAL_STATE = {
   isFetching: true,
-  isLogined: true
+  isLogined: false
 };
 
 export default function (state = INITIAL_STATE, action = {}) {
